@@ -29,7 +29,7 @@ const App = () => {
 
     const removeItem = (id: string) => {
         setItems((prev) => {
-            return prev.map((item, index) => {
+            return prev.map((item) => {
                 if (item.id === id) {
 
                     return {
