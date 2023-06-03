@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 import {TStateItem} from "./types/types";
-import './App.css';
 import {ITEMS} from "./constants/constants";
+import Orders from "./components/Orders/Orders";
+import Items from "./components/Items/Items";
+import './App.css';
+
 
 const App = () => {
     const [items, setItems] = useState<TStateItem[]>([
@@ -44,50 +47,12 @@ const App = () => {
 
     const totalSum: number = items.reduce((acc, item, index: number) => acc + item.count * ITEMS[index].price, 0);
     const totalItemsCount = items.reduce((acc, item) => acc + item.count, 0);
-    console.log(totalItemsCount);
+
     return (
         <div className="App">
-            <div className="orders">
-                <p className="orderDetails">Order details</p>
+            <Orders totalItemsCount={totalItemsCount} items={items} removeItem={removeItem} totalSum={totalSum} />
 
-
-                    {totalItemsCount ? (
-                            <div className="order">
-                        {
-                            items.map((item, index) => {
-                                if(item.count > 0) {
-                                    return (
-                                        <div className="orderItem" key={item.id}>
-                                            <span>{item.name}</span>
-                                            <span>x {item.count}</span>
-                                            <span>{ITEMS[index].price * item.count} KGS</span>
-                                            <button onClick={() => removeItem(item.id)}>X</button>
-                                        </div>
-                                    );
-                                }
-                                return null;
-                            })
-                        }
-                            </div>
-                    ) : (<div>Вы еще ничего не заказали</div>)}
-
-
-                <p className="price">Total price: {totalSum}</p>
-            </div>
-
-            <div className="items">
-                {ITEMS.map(((item, index: number) => (
-                    <div className="item" key={items[index].id} onClick={()=> addItem(items[index].id)}>
-                        <div>
-                            <img src={item.image} alt={item.name} />
-                        </div>
-                        <div>
-                            <p>{item.name}</p>
-                            <p>Price: {item.price} KGS</p>
-                        </div>
-                    </div>
-                )))}
-            </div>
+            <Items items={items} addItem={addItem} />
         </div>
     );
 };
