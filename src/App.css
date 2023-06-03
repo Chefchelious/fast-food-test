@@ -16,10 +16,12 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 30px;
+  align-self: flex-start;
 }
 
 .item {
   width: 200px;
+  height: 85px;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -75,6 +77,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.priceAndBtn span {
+  width: 100%;
 }
 
 .orderItem button {
