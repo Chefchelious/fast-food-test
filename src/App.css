@@ -4,12 +4,11 @@
   padding: 0 15px;
   margin: 50px auto;
   display: flex;
-  flex-wrap: wrap;
-  gap: 50px;
+  justify-content: space-between;
 }
 
 .orders, .items {
-  width: 40%;
+  width: 45%;
 }
 
 .items {
@@ -25,9 +24,24 @@
   align-items: center;
   gap: 20px;
   padding: 10px;
-  border: 1px solid black;
   border-radius: 10px;
   cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid transparent;
+}
+
+.item:hover {
+  border: 2px solid greenyellow;
+}
+
+.imgWrap {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.imgWrap img {
+  width: 32px;
 }
 
 .orders {
@@ -57,10 +71,90 @@
   width: 30%;
 }
 
+.priceAndBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .orderItem button {
   cursor: pointer;
+  display: inline-block;
+  margin-left: 15px;
+  border: none;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.orderItem button:hover {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .price {
   border-top: 2px solid black;
 }
+
+@media screen and (max-width: 1110px) {
+  .App {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .orders, .items {
+    width: 60%;
+  }
+
+  .orders {
+    border-right: none;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .orders {
+    width: 100%;
+  }
+
+  .items{
+    width: 480px;
+  }
+
+}
+
+@media screen and (max-width: 530px) {
+  .orders {
+    width: 100%;
+  }
+
+  .items {
+    justify-content: center;
+  }
+
+ .item {
+   width: 200px;
+ }
+}
+
+@media screen and (max-width: 530px) {
+  .orders {
+    width: 100%;
+  }
+
+  .items {
+    justify-content: center;
+  }
+
+  .orderItem {
+    border-bottom: 1px solid #d5decc;
+    padding-bottom: 10px;
+  }
+
+  .orderItem {
+   flex-wrap: wrap;
+  }
+
+  .priceAndBtn {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+

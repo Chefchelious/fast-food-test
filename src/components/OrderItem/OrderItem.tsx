@@ -1,4 +1,5 @@
 import React from 'react';
+import musr from "../../img/garbage.png"
 
 interface IProps {
 name: string;
@@ -12,8 +13,10 @@ const OrderItem: React.FC<IProps> = (props) => {
         <div className="orderItem">
             <span>{props.name}</span>
             <span>x {props.count}</span>
-            <span>{props.price} KGS</span>
-            <button onClick={props.onRemoveItem}>X</button>
+            <div className="priceAndBtn">
+                <span>{props.price} KGS</span>
+                <button onClick={props.onRemoveItem}><img src={musr} alt="musr"/></button>
+            </div>
         </div>
     );
 };

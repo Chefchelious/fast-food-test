@@ -12,7 +12,7 @@ const Items: React.FC<IProps> = ({items, addItem}) => {
         <div className="items">
             {ITEMS.map(((item, index: number) => (
                 <div className="item" key={items[index].id} onClick={()=> addItem(items[index].id)}>
-                    <div>
+                    <div className="imgWrap">
                         <img src={item.image} alt={item.name} />
                     </div>
                     <div>
