@@ -27,39 +27,50 @@ const App = () => {
         });
     };
 
+    const removeItem = (id: string) => {
+        setItems((prev) => {
+            return prev.map((item, index) => {
+                if (item.id === id) {
+
+                    return {
+                        ...item,
+                        count: 0,
+                    }
+                }
+                return item;
+            });
+        });
+    };
+
     const totalSum: number = items.reduce((acc, item, index: number) => acc + item.count * ITEMS[index].price, 0);
+    const totalItemsCount = items.reduce((acc, item) => acc + item.count, 0);
+    console.log(totalItemsCount);
     return (
         <div className="App">
             <div className="orders">
                 <p className="orderDetails">Order details</p>
-                <div className="order">
-                    {
-                        items.map((item, index) => {
-                            if(item.count === 1) {
-                                return (
-                                    <div className="orderItem" key={item.id}>
-                                        <span>{item.name}</span>
-                                        <span>x {item.count}</span>
-                                        <span>{ITEMS[index].price} KGS</span>
-                                        <button>X</button>
-                                    </div>
-                                );
-                            }
-                            if(item.count > 1) {
-                                return (
-                                    <div className="orderItem" key={item.id} onClick={()=> addItem(item.id)}>
-                                        <span>{item.name}</span>
-                                        <span>x {item.count}</span>
-                                        <span>{ITEMS[index].price * item.count} KGS</span>
-                                        <button>X</button>
-                                    </div>
-                                );
-                            }
 
-                            return null;
-                        })
-                    }
-                </div>
+
+                    {totalItemsCount ? (
+                            <div className="order">
+                        {
+                            items.map((item, index) => {
+                                if(item.count > 0) {
+                                    return (
+                                        <div className="orderItem" key={item.id}>
+                                            <span>{item.name}</span>
+                                            <span>x {item.count}</span>
+                                            <span>{ITEMS[index].price * item.count} KGS</span>
+                                            <button onClick={() => removeItem(item.id)}>X</button>
+                                        </div>
+                                    );
+                                }
+                                return null;
+                            })
+                        }
+                            </div>
+                    ) : (<div>Вы еще ничего не заказали</div>)}
+
 
                 <p className="price">Total price: {totalSum}</p>
             </div>
