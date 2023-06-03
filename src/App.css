@@ -1,3 +1,35 @@
 .App {
-  text-align: center;
+  box-sizing: border-box;
+  max-width: 1230px;
+  padding: 0 15px;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.orders, .items {
+  width: 40%;
+}
+
+.items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.item {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.orders {
+  border-right: 2px solid black;
 }

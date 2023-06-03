@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import './App.css';
 import {TStateItem} from "./types/types";
+import './App.css';
+import {ITEMS} from "./constants/constants";
 
 const App = () => {
     const [item, setItems] = useState<TStateItem[]>([
@@ -13,9 +14,21 @@ const App = () => {
     ]);
     return (
         <div className="App">
-            <div>Order details</div>
+            <div className="orders">Order details</div>
 
-            <div>Items</div>
+            <div className="items">
+                {ITEMS.map((item => (
+                    <div className="item">
+                        <div>
+                            <img src={item.image} alt={item.name} />
+                        </div>
+                        <div>
+                            <p>{item.name}</p>
+                            <p>Price: {item.price} KGS</p>
+                        </div>
+                    </div>
+                )))}
+            </div>
         </div>
     );
 };
